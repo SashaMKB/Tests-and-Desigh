@@ -7,20 +7,32 @@ namespace KTPO4310.Tarasov.Lib.src.LogAn
 
     public class LogAnalyzer
     {
-
-        public IExtensionManager iExtensionManager;
-        public LogAnalyzer(IExtensionManager manager) {
-            iExtensionManager = manager;
-        }
         /// <summary> Проверка подлинности имени файла </summary>
         public bool IsValidLogFileName(string fileName) {
-            IExtensionManager mrg = iExtensionManager;
+            IExtensionManager mrg = ExtensionManagerFactory.Create();
             try
             {
                 return mrg.IsValid(fileName);
             }
-            catch {
+            catch (Exception )
+            {
                 return false;
+            }
+        }
+
+        ///<summary> Анализировать лог файл </summary>
+        ///<param name="fileName"></param>
+        public void Analyze(string fileName) {
+            if (fileName.Length < 8) {
+                try
+                {
+                    IWebService webService = WebServiceFactory.Create();
+                    webService.LogError("Слишком короткое имя файла: " + fileName);
+                }
+                catch (Exception e) {
+                    IEmailService emailService = EmailServiceFactory.Create();
+                    emailService.SendEmail("somebody@gmail.com","Невозможно вызвать веб сервис",e.Message); //здесь можно сломать тест
+                }
             }
         }
     }

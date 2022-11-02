@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KTPO4310.Tarasov.UnitTest", "KTPO4310.Tarasov.UnitTest\KTPO4310.Tarasov.UnitTest.csproj", "{39CCC823-62D2-4CB8-AF4E-71E0F8F27024}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KTPO4310.Tarasov.UnitTest", "KTPO4310.Tarasov.UnitTest\KTPO4310.Tarasov.UnitTest.csproj", "{39CCC823-62D2-4CB8-AF4E-71E0F8F27024}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KTPO4310.Tarasov.Lib", "KTPO4310.Tarasov.Lib\KTPO4310.Tarasov.Lib.csproj", "{0F7078DF-272C-4F5D-8532-530B78ECE681}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KTPO4310.Tarasov.Lib", "KTPO4310.Tarasov.Lib\KTPO4310.Tarasov.Lib.csproj", "{0F7078DF-272C-4F5D-8532-530B78ECE681}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KTPO4310.Tarasov.Service", "KTPO4310.Tarasov.Service\KTPO4310.Tarasov.Service.csproj", "{F6C35239-E6F7-4273-B10A-C42CAE5AAF1B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{0F7078DF-272C-4F5D-8532-530B78ECE681}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F7078DF-272C-4F5D-8532-530B78ECE681}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F7078DF-272C-4F5D-8532-530B78ECE681}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6C35239-E6F7-4273-B10A-C42CAE5AAF1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6C35239-E6F7-4273-B10A-C42CAE5AAF1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6C35239-E6F7-4273-B10A-C42CAE5AAF1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6C35239-E6F7-4273-B10A-C42CAE5AAF1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

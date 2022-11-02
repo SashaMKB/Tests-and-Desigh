@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 
 namespace KTPO4310.Tarasov.Lib.src.LogAn
 {
@@ -6,10 +7,15 @@ namespace KTPO4310.Tarasov.Lib.src.LogAn
     {
         public bool IsValid(string fileName)
         {
-            //читать конфигурационный файл
-            //вернуть true
-            //если конфигурация поддерживается
-            throw new NotImplementedException();
+            string extension = ConfigurationManager.AppSettings.Get("extension");
+            if (string.IsNullOrEmpty(fileName)) {
+                throw new ArgumentException("File name must be given");
+
+            }
+            if (fileName.ToUpper().EndsWith(extension)) {
+                return true;
+            }
+            return false;
         }
     }
 }
