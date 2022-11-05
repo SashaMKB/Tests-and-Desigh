@@ -14,6 +14,21 @@ namespace KTPO4310.Tarasov.UnitTest.src.LogAn
             EmailServiceFactory.setEmailService(null);
         }
         [Test]
+        public void Analyze_WhenAnalyzed_FiredEvent() {
+            bool analyzedFired = false;
+
+            LogAnalyzer logAnalyzer = new LogAnalyzer();
+
+            logAnalyzer.Analyzed += delegate ()
+            {
+                analyzedFired = true;
+            };
+
+            logAnalyzer.Analyze("validfilename.tag");
+            Assert.True(analyzedFired);
+            
+        }
+        [Test]
         public void IsValidFileName_NameSupportedExtension_ReturnsTrue()
         {
             //Подготовка Теста

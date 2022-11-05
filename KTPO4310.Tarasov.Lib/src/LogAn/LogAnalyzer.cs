@@ -5,8 +5,9 @@ using System.Text;
 namespace KTPO4310.Tarasov.Lib.src.LogAn
 {/// <summary> Анализатор лог.файлов </summary>
 
-    public class LogAnalyzer
+    public class LogAnalyzer : ILogAnalyzer
     {
+        public event LogAnalyzerAction Analyzed = null;
         /// <summary> Проверка подлинности имени файла </summary>
         public bool IsValidLogFileName(string fileName) {
             IExtensionManager mrg = ExtensionManagerFactory.Create();
@@ -31,8 +32,14 @@ namespace KTPO4310.Tarasov.Lib.src.LogAn
                 }
                 catch (Exception e) {
                     IEmailService emailService = EmailServiceFactory.Create();
-                    emailService.SendEmail("somebody@gmail.com","Невозможно вызвать веб сервис",e.Message); //здесь можно сломать тест
+                    emailService.SendEmail("somebody@gmail.com", "Невозможно вызвать веб сервис", e.Message); //здесь можно сломать тест
                 }
+            }
+            RaiseAnalyzedEvent();
+        }
+        public void RaiseAnalyzedEvent() { 
+            if (Analyzed != null) {
+                 Analyzed();
             }
         }
     }
