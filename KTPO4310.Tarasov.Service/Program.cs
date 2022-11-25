@@ -1,24 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using KTPO4310.Tarasov.Lib.src.Common;
 using KTPO4310.Tarasov.Lib.src.LogAn;
+using KTPO4310.Tarasov.Lib.src.SampleCommands;
+using KTPO4310.Tarasov.Service.src.WindsorInstallers;
 
 namespace KTPO4310.Tarasov.Service
 {
     class Program 
     {
         static void Main(string[] Args) {
-            LogAnalyzer logAnalyzer = new LogAnalyzer();
-            Console.WriteLine("Valid:");
-            Console.WriteLine(logAnalyzer.IsValidLogFileName("valid.tag"));
-            Console.WriteLine(logAnalyzer.IsValidLogFileName("valid.TAG"));
-            Console.WriteLine(logAnalyzer.IsValidLogFileName("valid.tAg"));
-            Console.WriteLine("INValid:");
-            Console.WriteLine(logAnalyzer.IsValidLogFileName("invalid."));
-            Console.WriteLine(logAnalyzer.IsValidLogFileName("invalid.txt"));
-            Console.WriteLine(logAnalyzer.IsValidLogFileName("invalid"));
-            Console.WriteLine(logAnalyzer.IsValidLogFileName("invalid.?"));
-            Console.ReadKey();
+            CastleFactory.container.Install(
+                new SampleCommandInstaller(),
+                new ViewInstaller()
+                );
+
+            for (int i = 0; i < 3; i++)
+            {
+                ISampleCommand sampleCommand = CastleFactory.container.Resolve<ISampleCommand>();
+                sampleCommand.Execute();
+            }
         }
     }
 }
